@@ -1,0 +1,17 @@
+.project-main{
+     margin-top: 105px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column; 
+     gap: 2rem;
+}
+.project-heading{
+     font-size: 2rem;
+}
+.cards{
+     display: flex;
+     flex-wrap: wrap;
+     gap: 2rem;
+     justify-content: center;
+}
