@@ -97,7 +97,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Category Filter Buttons */}
-        <motion.div 
+        {/* <motion.div 
           className="category-filters"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -115,7 +115,7 @@ const Skills = () => {
               {category}
             </motion.button>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         <AnimatePresence mode="wait">
           <motion.div 

@@ -19,6 +19,13 @@ const Home = () => {
           exploring new technologies and building innovative solutions.
         </h2>
       </div>
+      <div className="resume">
+        <div className="btn">
+          <NavLink to="/resume" className="nav-link">
+            View CV
+          </NavLink>
+        </div>
+      </div>
     </div>
   );
 };

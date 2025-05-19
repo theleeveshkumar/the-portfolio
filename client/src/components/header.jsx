@@ -6,7 +6,6 @@ const navIcons = {
   home: "./src/assets/home.svg",
   skills: "./src/assets/skills.svg",
   projects: "./src/assets/project.svg",
-  resume: "./src/assets/resume.svg",
   contact: "./src/assets/contact.svg",
 };
 
@@ -61,7 +60,7 @@ const Header = () => {
               {menuOpen ? "×" : "☰"}
             </div>
             <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-              {["home", "skills", "projects", "resume", "contact"].map((key) => (
+              {["home", "skills", "projects", "contact"].map((key) => (
                 <li key={key}>
                   <NavLink
                     to={key === "home" ? "/" : `/${key}`}

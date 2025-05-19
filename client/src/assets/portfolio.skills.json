@@ -1,80 +1,87 @@
-[{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a100333"
+[
+  {
+    "name": "Python",
+    "category": ["General Purpose", "Backend", "Data Science"],
+    "priority": "High"
   },
-  "name": "Python",
-  "category": "General Purpose, Backend, Data Science",
-  "priority": "High"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a100334"
+  {
+    "name": "Java",
+    "category": ["Backend", "DSA"],
+    "priority": "High"
   },
-  "name": "JavaScript",
-  "category": "Frontend, Backend",
-  "priority": "High"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a100335"
+  {
+    "name": "C++",
+    "category": ["General Purpose", "DSA"],
+    "priority": "High"
   },
-  "name": "HTML",
-  "category": "Frontend",
-  "priority": "High"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a100336"
+  {
+    "name": "Git",
+    "category": ["Version Control"],
+    "priority": "High"
   },
-  "name": "CSS",
-  "category": "Frontend",
-  "priority": "High"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a100337"
+  {
+    "name": "HTML",
+    "category": ["Frontend"],
+    "priority": "High"
   },
-  "name": "C++",
-  "category": "General Purpose, DSA",
-  "priority": "Medium"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a100338"
+  {
+    "name": "Vanilla CSS",
+    "category": ["Frontend"],
+    "priority": "High"
   },
-  "name": "SQL",
-  "category": "Database",
-  "priority": "High"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a100339"
+  {
+    "name": "Tailwind CSS",
+    "category": ["Frontend", "Utility-first CSS"],
+    "priority": "High"
   },
-  "name": "TypeScript",
-  "category": "Frontend, Backend",
-  "priority": "Medium"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a10033a"
+  {
+    "name": "Bootstrap",
+    "category": ["Frontend", "CSS Framework"],
+    "priority": "High"
   },
-  "name": "Java",
-  "category": "Backend, DSA",
-  "priority": "Medium"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a10033b"
+  {
+    "name": "JavaScript",
+    "category": ["Frontend", "Backend"],
+    "priority": "Medium"
   },
-  "name": "Bash",
-  "category": "Scripting",
-  "priority": "Low"
-},
-{
-  "_id": {
-    "$oid": "681acf2ec73ba5ae8a10033c"
+  {
+    "name": "React",
+    "category": ["Frontend", "JavaScript Framework"],
+    "priority": "Medium"
   },
-  "name": "PHP",
-  "category": "Backend",
-  "priority": "Low"
-}]
+  {
+    "name": "Express",
+    "category": ["Backend", "Node.js Framework"],
+    "priority": "Medium"
+  },
+  {
+    "name": "Node.js",
+    "category": ["Backend", "JavaScript Runtime"],
+    "priority": "Medium"
+  },
+  {
+    "name": "MongoDB",
+    "category": ["Database", "NoSQL"],
+    "priority": "Low"
+  },
+  {
+    "name": "Pandas",
+    "category": ["Python Library", "Data Analytics"],
+    "priority": "Medium"
+  },
+  {
+    "name": "NumPy",
+    "category": ["Python Library", "Data Analytics"],
+    "priority": "Medium"
+  },
+  {
+    "name": "Matplotlib",
+    "category": ["Python Library", "Data Visualization"],
+    "priority": "Medium"
+  },
+  {
+    "name": "R",
+    "category": ["Data Analytics", "Statistical Computing"],
+    "priority": "Medium"
+  }
+]
