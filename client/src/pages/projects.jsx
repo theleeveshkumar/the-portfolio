@@ -3,6 +3,9 @@ import { Globe, Github } from "lucide-react";
 import "./css/projects.css";
 import "../components/css/projectCard.css";
 
+// ✅ Local JSON data (fallback)
+import localProjects from "../assets/portfolio.projects.json";
+
 // Reusable CardProject component
 const CardProject = ({
   title,
@@ -61,9 +64,16 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
+    // ✅ Using local JSON for now
+    setProjects(localProjects);
+
+    // ❌ Commented out MongoDB fetch for future use
+    /*
     fetch("http://localhost:5000/api/projects")
       .then(res => res.json())
-      .then(data => setProjects(data));
+      .then(data => setProjects(data))
+      .catch(err => console.error("Failed to fetch from MongoDB:", err));
+    */
   }, []);
 
   return (

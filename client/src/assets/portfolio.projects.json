@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "681ad0f5c73ba5ae8a100347"
+  },
+  "title": "leeveshkumarweb",
+  "date": "April 2025",
+  "imageUrl": "https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?ixid=2yJhcHBfaWQiOjEyMDd9",
+  "description": "• Personal portfolio showcasing projects, skills, and experience.\n• Responsive design built with React.js and Vanilla CSS.\n• Integrated contact form with email functionality.\n• Features smooth animations, GitHub/project links, and clean UI/UX.",
+  "techStack": [
+    "React.js",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Vanilla CSS"
+  ],
+  "liveLink": "http://leeveshkumarweb.vercel.app/",
+  "repoLink": "https://github.com/theleeveshkumar/the-portfolio"
+},
+{
+  "_id": {
+    "$oid": "681ad2a9c73ba5ae8a100348"
+  },
+  "title": "taskifyPro",
+  "date": "March 2025",
+  "imageUrl": "https://images.unsplash.com/photo-1581090700227-4c4c0c74ec11?ixid=MnwzNjUyOXwwfDF8c2VhcmNofDI0fHx0YXNrfGVufDB8fHx8",
+  "description": "• Full-stack task management app to organize personal and team tasks.\n• Built with MERN stack and Redux for state management.\n• Features user auth, deadline reminders, and drag-and-drop task boards.",
+  "techStack": [
+    "React.js",
+    "Redux",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Tailwind CSS"
+  ],
+  "liveLink": "https://taskifypro.vercel.app/",
+  "repoLink": "https://github.com/theleeveshkumar/taskifypro"
+},
+{
+  "_id": {
+    "$oid": "681ad36ec73ba5ae8a100349"
+  },
+  "title": "weatherSnap",
+  "date": "February 2025",
+  "imageUrl": "https://images.unsplash.com/photo-1501973801540-537f08ccae7d?ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHdlYXRoZXJ8ZW58MHx8fHw%3D",
+  "description": "• Real-time weather app using OpenWeatherMap API.\n• Built with React and Axios to fetch and display dynamic weather data.\n• Responsive design with geolocation support and animated icons.",
+  "techStack": [
+    "React.js",
+    "Axios",
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "liveLink": "https://weathersnap.vercel.app/",
+  "repoLink": "https://github.com/theleeveshkumar/weathersnap"
+},
+{
+  "_id": {
+    "$oid": "681aeb561dc4f338985580a7"
+  },
+  "title": "WeatherForcast",
+  "date": "February 2025",
+  "imageUrl": "https://images.unsplash.com/photo-1501973801540-537f08ccae7d?ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHdlYXRoZXJ8ZW58MHx8fHw%3D",
+  "description": "• Real-time weather app using OpenWeatherMap API.\n• Built with React and Axios to fetch and display dynamic weather data.\n• Responsive design with geolocation support and animated icons.",
+  "techStack": [
+    "React.js",
+    "Axios",
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "liveLink": "https://weathersnap.vercel.app/",
+  "repoLink": "https://github.com/theleeveshkumar/weathersnap"
+}]
