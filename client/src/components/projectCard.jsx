@@ -1,7 +1,7 @@
 import React from "react";
 import { Globe, Github } from "lucide-react";
-import "./css/ProjectCard.css";
-const ProjectCard = ({
+import "./css/projectCard.css";
+const projectCard = ({
   title,
   date,
   imageUrl,
@@ -43,4 +43,4 @@ const ProjectCard = ({
   );
 };
 
-export default ProjectCard;
+export default projectCard;
