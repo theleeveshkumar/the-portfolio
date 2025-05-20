@@ -1,21 +1,86 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import "./css/skills.css";
+import { 
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  LinearProgress,
+  Chip,
+  ToggleButton,
+  ToggleButtonGroup,
+  useTheme,
+  Fade,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-// Icons for various skills (you can import these from a library like react-icons)
-import { FaCode, FaDatabase, FaDesktop, FaServer, FaMobile, FaTools } from 'react-icons/fa';
+// Icons for various skills
+import CodeIcon from '@mui/icons-material/Code';
+import StorageIcon from '@mui/icons-material/Storage';
+import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
+import DnsIcon from '@mui/icons-material/Dns';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import BuildIcon from '@mui/icons-material/Build';
 
 // Import local JSON file
 import localSkills from "../assets/portfolio.skills.json";
 
+// Styled components
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: 600,
+  marginBottom: theme.spacing(1),
+  position: "relative",
+}));
+
+const SubTitle = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(4),
+  color: theme.palette.text.secondary,
+}));
+
+const SkillCard = styled(Card)(({ theme }) => ({
+  height: '100%',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-8px)',
+    boxShadow: theme.shadows[4],
+  },
+}));
+
+const PriorityChip = styled(Chip)(({ theme, priority }) => {
+  const priorityColors = {
+    high: theme.palette.success.main,
+    medium: theme.palette.info.main,
+    low: theme.palette.warning.main,
+  };
+  
+  return {
+    backgroundColor: priorityColors[priority.toLowerCase()] || theme.palette.grey[500],
+    color: theme.palette.common.white,
+    fontWeight: 500,
+  };
+});
+
+const FilterToggleButton = styled(ToggleButton)(({ theme }) => ({
+  padding: theme.spacing(0.5, 2),
+  '&.Mui-selected': {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.common.white,
+    '&:hover': {
+      backgroundColor: theme.palette.primary.dark,
+    },
+  },
+}));
+
 const Skills = () => {
-  const [skillsData, setSkillsData] = useState({ programming_languages: [] });
+  const theme = useTheme();
+  const [skillsData, setSkillsData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isInView, setIsInView] = useState(false);
   
   useEffect(() => {
     // Use local JSON data
-    setSkillsData({ programming_languages: localSkills });
+    setSkillsData(localSkills);
     
     // Set in view after a small delay for animations
     const timer = setTimeout(() => setIsInView(true), 300);
@@ -23,158 +88,168 @@ const Skills = () => {
   }, []);
 
   // Extract unique categories from skills
-  const categories = ['All', ...new Set(skillsData.programming_languages.map(skill => skill.category))];
+  const categories = ['All', ...new Set(skillsData.map(skill => skill.category))];
   
   // Filter skills based on selected category
   const filteredSkills = selectedCategory === 'All' 
-    ? skillsData.programming_languages 
-    : skillsData.programming_languages.filter(skill => skill.category === selectedCategory);
+    ? skillsData 
+    : skillsData.filter(skill => skill.category === selectedCategory);
 
-  // Get icon for category
+  // Handle category change
+  const handleCategoryChange = (event, newCategory) => {
+    if (newCategory !== null) {
+      setSelectedCategory(newCategory);
+    }
+  };
+
+  // Get icon based on category
   const getCategoryIcon = (category) => {
-    const iconMap = {
-      'Frontend': <FaDesktop />,
-      'Backend': <FaServer />,
-      'Database': <FaDatabase />,
-      'Mobile': <FaMobile />,
-      'DevOps': <FaTools />,
-      // Add more mappings as needed
-      'default': <FaCode />
-    };
+    const iconProps = { sx: { fontSize: 28, color: theme.palette.primary.main } };
     
-    return iconMap[category] || iconMap.default;
-  };
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.3
-      }
+    switch(category) {
+      case 'Frontend':
+        return <DesktopWindowsIcon {...iconProps} />;
+      case 'Backend':
+        return <DnsIcon {...iconProps} />;
+      case 'Database':
+        return <StorageIcon {...iconProps} />;
+      case 'Mobile':
+        return <PhoneAndroidIcon {...iconProps} />;
+      case 'DevOps':
+        return <BuildIcon {...iconProps} />;
+      default:
+        return <CodeIcon {...iconProps} />;
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        damping: 15,
-        stiffness: 100
-      }
+  // Map priority to progress value
+  const getPriorityValue = (priority) => {
+    switch(priority.toUpperCase()) {
+      case 'HIGH':
+        return 90;
+      case 'MEDIUM':
+        return 70;
+      case 'LOW':
+        return 50;
+      default:
+        return 60;
     }
   };
 
-  const headingVariants = {
-    hidden: { opacity: 0, y: -30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
+  // Map priority to color
+  const getPriorityColor = (priority) => {
+    switch(priority.toUpperCase()) {
+      case 'HIGH':
+        return 'success';
+      case 'MEDIUM':
+        return 'info';
+      case 'LOW':
+        return 'warning';
+      default:
+        return 'primary';
     }
   };
 
   return (
-    <div className='skills-section'>
-      <div className="skills-container">
-        <motion.div
-          className="section-heading"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={headingVariants}
-        >
-          <h2 className="skills-title">Technical Expertise</h2>
-          <div className="title-underline"></div>
-          <p className="skills-subtitle">A showcase of my technical skills and proficiency levels</p>
-        </motion.div>
+    <Box sx={{ py: 8, bgcolor: theme.palette.background.default }}>
+      <Container>
+        <Fade in={isInView} timeout={800}>
+          <Box sx={{ mb: 6, textAlign: 'center' }}>
+            <SectionTitle variant="h3" gutterBottom>
+              Technical Expertise
+            </SectionTitle>
+            <Box 
+              sx={{ 
+                width: 60, 
+                height: 4, 
+                bgcolor: theme.palette.primary.main, 
+                mx: 'auto', 
+                mb: 2 
+              }} 
+            />
+            <SubTitle variant="h6">
+              A showcase of my technical skills and proficiency levels
+            </SubTitle>
+          </Box>
+        </Fade>
 
         {/* Category Filter Buttons */}
-        {/* <motion.div 
-          className="category-filters"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          {categories.map((category, index) => (
-            <motion.button
-              key={index}
-              className={`filter-btn ${category === selectedCategory ? 'active' : ''}`}
-              onClick={() => setSelectedCategory(category)}
-              whileHover={{ scale: 1.03, backgroundColor: category === selectedCategory ? '' : '#f3f4f6' }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+          <Fade in={isInView} timeout={1000}>
+            <ToggleButtonGroup
+              value={selectedCategory}
+              exclusive
+              onChange={handleCategoryChange}
+              aria-label="skill categories"
+              size="small"
+              sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
             >
-              {category}
-            </motion.button>
-          ))}
-        </motion.div> */}
+              {categories.map((category, index) => (
+                <FilterToggleButton key={index} value={category}>
+                  {category}
+                </FilterToggleButton>
+              ))}
+            </ToggleButtonGroup>
+          </Fade>
+        </Box>
 
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={selectedCategory}
-            className="skills-grid"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            exit={{ opacity: 0, transition: { duration: 0.2 } }}
-          >
-            {filteredSkills.map((skill, index) => (
-              <motion.div 
-                key={index} 
-                className={`skill-card priority-${skill.priority.toLowerCase()}`}
-                variants={itemVariants}
-                whileHover={{ 
-                  y: -8,
-                  boxShadow: "0px 15px 25px rgba(0, 0, 0, 0.08)",
-                  transition: {
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 10
-                  }
+        <Grid container spacing={3}>
+          {filteredSkills.map((skill, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Fade 
+                in={isInView} 
+                style={{ 
+                  transitionDelay: `${index * 100}ms`
                 }}
-                layout
+                timeout={800}
               >
-                <div className="skill-icon">
-                  {getCategoryIcon(skill.category)}
-                </div>
-                <div className="skill-content">
-                  <h3>{skill.name}</h3>
-                  <div className="skill-meta">
-                    <span className="skill-category">{skill.category}</span>
-                    <span className={`skill-badge priority-${skill.priority.toLowerCase()}`}>
-                      {skill.priority}
-                    </span>
-                  </div>
-                  
-                  {/* Skill Level Indicator */}
-                  <div className="skill-level">
-                    <div className="level-bar">
-                      <motion.div 
-                        className={`level-fill priority-${skill.priority.toLowerCase()}`}
-                        initial={{ width: 0 }}
-                        animate={{ 
-                          width: skill.priority === 'HIGH' ? '90%' : 
-                                 skill.priority === 'MEDIUM' ? '70%' : '50%' 
-                        }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
+                <SkillCard>
+                  <CardContent>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                      {getCategoryIcon(skill.category)}
+                      <Typography 
+                        variant="h6" 
+                        component="div" 
+                        sx={{ ml: 1, fontWeight: 600 }}
+                      >
+                        {skill.name}
+                      </Typography>
+                    </Box>
+                    
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+                      <Chip 
+                        label={skill.category} 
+                        size="small" 
+                        variant="outlined"
                       />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </div>
+                      <PriorityChip 
+                        label={skill.priority} 
+                        size="small"
+                        priority={skill.priority.toLowerCase()}
+                      />
+                    </Box>
+                    
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                      Proficiency Level
+                    </Typography>
+                    <LinearProgress
+                      variant="determinate"
+                      value={getPriorityValue(skill.priority)}
+                      color={getPriorityColor(skill.priority)}
+                      sx={{ 
+                        height: 8, 
+                        borderRadius: 4,
+                        backgroundColor: theme.palette.grey[200]
+                      }}
+                    />
+                  </CardContent>
+                </SkillCard>
+              </Fade>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 

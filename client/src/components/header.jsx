@@ -1,46 +1,35 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "./css/header.css";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Box,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import CodeIcon from "@mui/icons-material/Code";
+import WorkIcon from "@mui/icons-material/Work";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
 
-const navIcons = {
-  home: "./src/assets/home.svg",
-  skills: "./src/assets/skills.svg",
-  projects: "./src/assets/project.svg",
-  contact: "./src/assets/contact.svg",
-};
+const navItems = [
+  { key: "home", label: "Home", to: "/", icon: <HomeIcon /> },
+  { key: "skills", label: "Skills", to: "/skills", icon: <CodeIcon /> },
+  { key: "projects", label: "Projects", to: "/projects", icon: <WorkIcon /> },
+  { key: "contact", label: "Contact", to: "/contact", icon: <ContactMailIcon /> },
+];
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // Default is light mode
   const [isScrolled, setIsScrolled] = useState(false);
-  const menuRef = useRef(null);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  const toggleTheme = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    document.documentElement.classList.toggle("dark", newDarkMode);
-    localStorage.setItem("theme", newDarkMode ? "dark" : "light");
-  };
-
-  useEffect(() => {
-    // Check localStorage for theme preference
-    const savedTheme = localStorage.getItem("theme");
-    const isDark = savedTheme === "dark";
-    setDarkMode(isDark);
-    document.documentElement.classList.toggle("dark", isDark);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMenuOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,39 +40,92 @@ const Header = () => {
   }, []);
 
   return (
-    <div className={`header ${isScrolled ? "scrolled" : ""}`}>
-      <div className="header-content">
-        <a href="/" className="header-title">leeveshkumarweb</a>
-        <div className="header-controls">
-          <nav className="header-nav" ref={menuRef}>
-            <div className="menu-icon" onClick={toggleMenu}>
-              {menuOpen ? "×" : "☰"}
-            </div>
-            <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-              {["home", "skills", "projects", "contact"].map((key) => (
-                <li key={key}>
-                  <NavLink
-                    to={key === "home" ? "/" : `/${key}`}
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                    end={key === "home"}
-                  >
-                    <img src={navIcons[key]} alt={key} width="35" height="35" />
-                    {key.charAt(0).toUpperCase() + key.slice(1)}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: isScrolled ? "#121212" : "transparent",
+          backdropFilter: "blur(10px)",
+          boxShadow: isScrolled ? "0 2px 10px rgba(0,0,0,0.3)" : "none",
+          transition: "all 0.3s ease-in-out",
+        }}
+      >
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Typography
+            variant="h6"
+            component="a"
+            href="/"
+            sx={{
+              color: "white",
+              textDecoration: "none",
+              fontWeight: 600,
+              fontFamily: "'Montserrat', sans-serif",
+              letterSpacing: "0.8px",
+            }}
           >
-            {darkMode ? "☀️" : "🌙"}
-          </button>
-        </div>
-      </div>
-    </div>
+            leeveshkumarweb
+          </Typography>
+
+          {/* Desktop Nav */}
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
+            {navItems.map(({ key, label, to, icon }) => (
+              <NavLink
+                key={key}
+                to={to}
+                style={({ isActive }) => ({
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  textDecoration: "none",
+                  color: isActive ? "#00BCD4" : "white",
+                  fontWeight: isActive ? 600 : 400,
+                  transition: "0.2s",
+                })}
+              >
+                {icon}
+                {label}
+              </NavLink>
+            ))}
+          </Box>
+
+          {/* Mobile Menu Icon */}
+          <IconButton
+            edge="end"
+            color="inherit"
+            onClick={toggleMenu}
+            sx={{ display: { md: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer anchor="right" open={menuOpen} onClose={toggleMenu} PaperProps={{ sx: { backgroundColor: "#1c1c1c", color: "#fff" } }}>
+        <Box sx={{ width: 250, paddingTop: 4 }}>
+          <List>
+            {navItems.map(({ key, label, to, icon }) => (
+              <ListItemButton
+                key={key}
+                component={NavLink}
+                to={to}
+                onClick={toggleMenu}
+                sx={{
+                  color: "inherit",
+                  "&.active": {
+                    backgroundColor: "#2a2a2a",
+                    fontWeight: "bold",
+                  },
+                }}
+              >
+                <ListItemIcon sx={{ color: "#00BCD4" }}>{icon}</ListItemIcon>
+                <ListItemText primary={label} />
+              </ListItemButton>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
+    </>
   );
 };
 
