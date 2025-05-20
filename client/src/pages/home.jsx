@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Container,
-  Grid,
-} from "@mui/material";
+import { Box, Typography, Button, Container, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import waitingIcon from "../assets/waiting.svg";
 import { Link as RouterLink } from "react-router-dom";
@@ -18,7 +12,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import RedditIcon from "@mui/icons-material/Reddit";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp"; 
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import CodeIcon from "@mui/icons-material/Code";
 
@@ -96,6 +90,26 @@ const SocialBar = styled(Box)(({ theme }) => ({
   zIndex: 1000,
   [theme.breakpoints.down("sm")]: {
     display: "none",
+    top: "auto",
+    bottom: 0,
+    right: 0,
+    left: 0,
+    transform: "none",
+    flexDirection: "row",
+    justifyContent: "center",
+    padding: theme.spacing(1, 0),
+    gap: theme.spacing(4),
+    padding: theme.spacing(0.5, 0), 
+    gap: theme.spacing(1),
+    backgroundColor: "#1a1a1a",
+    borderRadius: "8px",
+    boxShadow: "0px 4px 15px rgba(0,0,0,0.2)",
+    fontSize: "0.8rem",
+    "& > *": {
+      fontSize: "1.2rem",
+      width: "1.5rem",
+      height: "1.5rem",
+    },
   },
 }));
 
@@ -103,35 +117,131 @@ const Home = () => {
   return (
     <>
       <SocialBar>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-          <GitHubIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://github.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GitHubIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
-          <LinkedInIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://linkedin.com/in/yourprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkedInIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer">
-          <TwitterIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://twitter.com/yourhandle"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <TwitterIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
-          <InstagramIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://instagram.com/yourprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InstagramIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
-          <FacebookIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://facebook.com/yourprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FacebookIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://reddit.com/user/yourusername" target="_blank" rel="noopener noreferrer">
-          <RedditIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://reddit.com/user/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <RedditIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://leetcode.com/yourprofile" target="_blank" rel="noopener noreferrer">
-          <CodeIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://leetcode.com/yourprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <CodeIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer">
-          <TelegramIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://t.me/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <TelegramIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
-        <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer">
-          <WhatsAppIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+        <a
+          href="https://wa.me/yourphonenumber"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <WhatsAppIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
         <a href="mailto:youremail@example.com">
-          <EmailIcon sx={{ color: "#90caf9", "&:hover": { color: "#fff" }, fontSize: 28 }} />
+          <EmailIcon
+            sx={{
+              color: "#90caf9",
+              "&:hover": { color: "#fff" },
+              fontSize: 28,
+            }}
+          />
         </a>
       </SocialBar>
       <HeroSection>
@@ -163,10 +273,7 @@ const Home = () => {
                   alignItems: "center",
                 }}
               >
-                <HeroImage
-                  src={waitingIcon}
-                  alt="Developer Illustration"
-                />
+                <HeroImage src={waitingIcon} alt="Developer Illustration" />
               </Box>
             </Grid>
           </Grid>
