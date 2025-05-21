@@ -116,7 +116,7 @@ const Home = () => {
     <>
       <SocialBar>
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/theleeveshkumar/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -129,7 +129,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://linkedin.com/in/yourprofile"
+          href="https://linkedin.com/in/leevesh-kumar/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -142,7 +142,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://twitter.com/yourhandle"
+          href="https://x.com/Leeveshdewangan"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -155,7 +155,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://instagram.com/yourprofile"
+          href="https://www.instagram.com/leevesh.kumar/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -168,7 +168,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://facebook.com/yourprofile"
+          href="http://www.facebook.com/find-friends"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -181,7 +181,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://reddit.com/user/yourusername"
+          href="https://www.reddit.com/user/dank_nigro/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -194,7 +194,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://leetcode.com/yourprofile"
+          href="http://leetcode.com/u/leevesh"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -207,7 +207,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://t.me/yourusername"
+          href="https://t.me/@lkd_18"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -220,7 +220,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="https://wa.me/yourphonenumber"
+          href="https://wa.me/6267887648"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -232,7 +232,7 @@ const Home = () => {
             }}
           />
         </a>
-        <a href="mailto:youremail@example.com">
+        <a href="mailto:leeveshkumar24@gmail.com">
           <EmailIcon
             sx={{
               color: "#90caf9",
