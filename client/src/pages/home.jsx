@@ -168,7 +168,7 @@ const Home = () => {
           />
         </a>
         <a
-          href="http://www.facebook.com/find-friends"
+          href="https://www.facebook.com/fist.hand.77/"
           target="_blank"
           rel="noopener noreferrer"
         >
